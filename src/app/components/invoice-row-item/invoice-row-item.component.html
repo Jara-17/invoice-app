@@ -1,0 +1,35 @@
+<td class="px-4 py-2 border border-[#ddd] text-[#3f3f3f]">
+  {{ item.id }}
+</td>
+<td class="px-4 py-2 border border-[#ddd] text-[#3f3f3f]">
+  {{ item.product }}
+</td>
+<td class="px-4 py-2 border border-[#ddd] text-[#3f3f3f]">
+  {{ item.price | currency : "EUR" }}
+</td>
+<td class="px-4 py-2 border border-[#ddd] text-[#3f3f3f]">
+  {{ item.quantity }}
+</td>
+<td class="px-4 py-2 border border-[#ddd] text-[#3f3f3f]">
+  {{ item.price * item.quantity | currency : "EUR" }}
+</td>
+<td class="px-4 py-2 border border-[#ddd] text-[#3f3f3f]">
+  <button 
+    type="button"
+    class="
+      bg-red-500
+      hover:bg-red-600
+      border-2
+      border-red-700
+      outline-red-800
+      text-white
+      font-bold
+      px-4
+      py-2
+      rounded-lg
+    "
+    (click)="onRemove(item.id)"
+  >
+  Eliminar
+  </button>
+</td>

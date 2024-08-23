@@ -1,0 +1,19 @@
+<h3 class="text-2xl font-bold">Datos del Cliente</h3>
+
+<ul class="mt-4">
+  <li class="text-lg">
+    <span class="font-bold text-xl">Nombre:</span>
+    {{ client.name }} {{ client.lastname }}
+  </li>
+
+  <li class="text-lg">
+    <span class="font-bold text-xl">Residencia:</span>
+    {{ client.address.country }},
+    {{ client.address.city }}
+  </li>
+  <li class="text-lg">
+    <span class="font-bold text-xl">Dirección:</span>
+    {{ client.address.street}},
+    {{ client.address.number }}
+  </li>
+</ul>

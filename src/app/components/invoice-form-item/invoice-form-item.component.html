@@ -1,0 +1,292 @@
+@if (isHidenForm) {
+  <form (ngSubmit)="onSumit()" #itemForm="ngForm">
+  <div class="bg-gray-900 rounded-t-lg p-8">
+    <h2 class="text-4xl font-bold leading-7 text-white">
+      Agregar Item
+    </h2>
+    <p class="mt-4 text-base leading-6 text-gray-300">
+      Rellena el siguiente formulario para agregar un item a la factura.
+    </p>
+  </div>
+
+  <div class="px-8">
+    <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+      <div class="sm:col-span-12">
+        <label
+          for="product"
+          class="block text-sm font-medium leading-6 text-gray-900"
+          >Nombre del Producto</label
+        >
+        <div class="mt-2">
+          <input
+            type="text"
+            name="product"
+            id="product"
+            placeholder="Ingrese el nombre del producto"
+            class="
+              px-2
+              block 
+              w-full 
+              rounded-md 
+              border-0 
+              py-1.5 
+              text-gray-900 
+              shadow-sm 
+              ring-1 
+              ring-inset 
+              ring-gray-300 
+              placeholder:text-gray-400 
+              focus:ring-2 
+              focus:ring-inset 
+              focus:ring-indigo-600 
+              outline-indigo-600
+              sm:text-sm 
+              sm:leading-6
+            "
+            [(ngModel)]="item.product"
+            required
+            minlength="5"
+            #product="ngModel"
+          />
+        </div>
+
+        @if (product.invalid && (product.dirty || product.touched)) {
+          @if (product.errors!["required"]) {
+            <div class="mt-2">
+              <p 
+                class="
+                  bg-red-600
+                  border-2
+                  border-red-800
+                  rounded-lg
+                  text-white
+                  uppercase
+                  font-bold
+                  text-lg
+                  text-center
+                  p-4  
+                "
+              >
+                El campo "nombre del producto" es requerido
+              </p>
+            </div>
+          }
+
+          @if (product.errors!["minlength"]) {
+            <div class="mt-2">
+              <p 
+                class="
+                  bg-red-600
+                  border-2
+                  border-red-800
+                  rounded-lg
+                  text-white
+                  uppercase
+                  font-bold
+                  text-lg
+                  text-center
+                  p-4  
+                "
+              >
+                El campo "nombre del producto" debe tener al menos 5 caracteres!
+              </p>
+            </div>
+          }
+        }
+      </div>
+
+      <div class="sm:col-span-12">
+        <label
+          for="price"
+          class="block text-sm font-medium leading-6 text-gray-900"
+          >Precio</label
+        >
+        <div class="mt-2">
+          <input
+            type="number"
+            name="price"
+            id="price"
+            placeholder="Ingrese el precio del product"
+            class="
+              block 
+              w-full 
+              rounded-md 
+              border-0 
+              px-2
+              py-1.5 
+              text-gray-900 
+              shadow-sm 
+              ring-1 
+              ring-inset 
+              ring-gray-300 
+              placeholder:text-gray-400 
+              focus:ring-2 
+              focus:ring-inset 
+              focus:ring-indigo-600 
+              outline-indigo-600
+              sm:text-sm 
+              sm:leading-6
+            "
+            [(ngModel)]="item.price"
+            required
+            min="2"
+            #price="ngModel"
+          />
+        </div>
+
+        @if (price.invalid && (price.dirty || price.touched)) {
+          @if (price.errors!["required"]) {
+            <div class="mt-2">
+              <p 
+                class="
+                  bg-red-600
+                  border-2
+                  border-red-800
+                  rounded-lg
+                  text-white
+                  uppercase
+                  font-bold
+                  text-lg
+                  text-center
+                  p-4  
+                "
+              >
+                El campo "Precio" es requerido
+              </p>
+            </div>
+          }
+
+          @if (price.errors!["min"]) {
+            <div class="mt-2">
+              <p 
+                class="
+                  bg-red-600
+                  border-2
+                  border-red-800
+                  rounded-lg
+                  text-white
+                  uppercase
+                  font-bold
+                  text-lg
+                  text-center
+                  p-4  
+                "
+              >
+                El campo "Precio" debe ser mayor o igual 2!
+              </p>
+            </div>
+          }
+        }
+      </div>
+
+      <div class="sm:col-span-12">
+        <label
+          for="quantity"
+          class="block text-sm font-medium leading-6 text-gray-900"
+          >Cantidad</label
+        >
+        <div class="mt-2">
+          <input
+            id="quantity"
+            name="quantity"
+            type="number"
+            placeholder="Ingrese la cantidad de productos"
+            class="
+              block 
+              w-full 
+              rounded-md 
+              border-0 
+              px-2
+              py-1.5 
+              text-gray-900 
+              shadow-sm 
+              ring-1 
+              ring-inset 
+              ring-gray-300 
+              placeholder:text-gray-400 
+              focus:ring-2 
+              focus:ring-inset 
+              focus:ring-indigo-600 
+              outline-indigo-600
+              sm:text-sm 
+              sm:leading-6
+            "
+            [(ngModel)]="item.quantity"
+            required
+            min="1"
+            #quantity="ngModel"        
+          />
+        </div>
+
+        @if (quantity.invalid && (quantity.dirty || quantity.touched)) {
+          @if (quantity.errors!["required"]) {
+            <div class="mt-2">
+              <p 
+                class="
+                  bg-red-600
+                  border-2
+                  border-red-800
+                  rounded-lg
+                  text-white
+                  uppercase
+                  font-bold
+                  text-lg
+                  text-center
+                  p-4  
+                "
+              >
+                El campo "Cantidad" es requerido
+              </p>
+            </div>
+          }
+
+          @if (quantity.errors!["min"]) {
+            <div class="mt-2">
+              <p 
+                class="
+                  bg-red-600
+                  border-2
+                  border-red-800
+                  rounded-lg
+                  text-white
+                  uppercase
+                  font-bold
+                  text-lg
+                  text-center
+                  p-4  
+                "
+              >
+                El campo "Cantidad" debe tener al menos 1 digito y ser mayor a 0!
+              </p>
+            </div>
+          }
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-gray-900 rounded-b-lg p-8 mt-10 flex justify-center">
+    <button type="submit"
+      class="
+        bg-indigo-500
+        hover:bg-indigo-700
+        border-indigo-700
+        border-2
+        outline-none
+        px-4
+        py-2
+        font-bold
+        text-white
+        rounded-lg
+        w-2/4
+        transition-colors
+        disabled:bg-gray-500
+        disabled:border-gray-700
+      "
+      [disabled]="itemForm.invalid"
+    >
+      Nuevo Item
+    </button>
+  </div>
+</form>
+}
